@@ -1,0 +1,42 @@
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+h1,
+p,
+nav {
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(1, 1, 1);
+}
