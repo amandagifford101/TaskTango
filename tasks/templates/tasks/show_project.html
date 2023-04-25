@@ -5,32 +5,34 @@
         <div>
             <h1>{{ projects.name }}</h1>
             <h2>Tasks</h2>
-            <p><a href="{% url "create_task" %}">Create a new task</a></p>
+            <p>
+                <a href="{% url "create_task" %}">Create a new task</a>
+            </p>
             {% if not projects.tasks.all %}
                 <p>This project has no tasks</p>
             {% else %}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Assignee</th>
-                        <th>Start date</th>
-                        <th>Due date</th>
-                        <th>Is completed</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for task in projects.tasks.all %}
+                <table>
+                    <thead>
                         <tr>
-                            <td>{{ task.name }}</td>
-                            <td>{{ task.assignee }}</td>
-                            <td>{{ task.start_date }}</td>
-                            <td>{{ task.due_date }}</td>
-                            <td>{{ task.is_completed|yesno:"yes, no" }}</td>
+                            <th>Name</th>
+                            <th>Assignee</th>
+                            <th>Start date</th>
+                            <th>Due date</th>
+                            <th>Is completed</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {% for task in projects.tasks.all %}
+                            <tr>
+                                <td>{{ task.name }}</td>
+                                <td>{{ task.assignee }}</td>
+                                <td>{{ task.start_date }}</td>
+                                <td>{{ task.due_date }}</td>
+                                <td>{{ task.is_completed|yesno:"yes, no" }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             {% endif %}
         </div>
     </main>
