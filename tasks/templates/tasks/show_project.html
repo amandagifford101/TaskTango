@@ -4,6 +4,8 @@
     <main>
         <div>
             <h1>{{ projects.name }}</h1>
+            <h2>Tasks</h2>
+            <p><a href="{% url "create_task" %}">Create a new task</a></p>
             {% if not projects.tasks.all %}
                 <p>This project has no tasks</p>
             {% else %}
@@ -24,7 +26,7 @@
                             <td>{{ task.assignee }}</td>
                             <td>{{ task.start_date }}</td>
                             <td>{{ task.due_date }}</td>
-                            <td>{{ task.is_completed }}</td>
+                            <td>{{ task.is_completed|yesno:"yes, no" }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
