@@ -3,32 +3,40 @@
 {% block content %}
     <main>
         <div>
-            <h1>My Projects</h1>
-            <p>
-                <a href="{% url "create_project" %}">Create a new project</a>
-            </p>
+            <h1 class="h1 text-center fw-bold">My Projects</h1>
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-outline-primary" href="{% url "create_project" %}" role="button">
+                Create a new project
+            </a>
+        </div>
             {% if not projects %}
                 <p>You are not assigned to any projects</p>
             {% else %}
-            <div class="flex-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Number of tasks</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for project in projects.all %}
-                            <tr>
-                                <td>
-                                    <a href="{% url 'show_project' project.id %}">{{ project.name }}</a>
-                                </td>
-                                <td>{{ project.tasks.all|length }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Number of tasks</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for project in projects.all %}
+                                        <tr>
+                                            <td>
+                                                <a class="btn btn-outline-info" href="{% url 'show_project' project.id %}" role="button">{{ project.name }}</a>
+                                            </td>
+                                            <td>{{ project.tasks.all|length }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
             {% endif %}
         </div>

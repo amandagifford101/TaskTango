@@ -3,34 +3,44 @@
 {% block content %}
     <main>
         <div>
-            <h1>My Tasks</h1>
-            <p>
-                <a href="{% url "create_task" %}">Create a new task</a>
-            </p>
+            <h1 class="h1 text-center fw-bold">My Tasks</h1>
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-outline-primary" href="{% url "create_task" %}" role="button">
+                    Create a new task
+                </a>
+            </div>
             {% if not tasks %}
                 <p>You have no tasks</p>
             {% else %}
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Start date</th>
-                            <th>Due date</th>
-                            <th>Is completed</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for task in tasks %}
-                            <tr>
-                                <td>{{ task.name }}</td>
-                                <td>{{ task.start_date }}</td>
-                                <td>{{ task.due_date }}</td>
-                                <td>{{ task.is_completed|yesno:"yes, no" }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% endif %}
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Start date</th>
+                                        <th>Due date</th>
+                                        <th>Is completed</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for task in tasks %}
+                                        <tr>
+                                            <td>{{ task.name }}</td>
+                                            <td>{{ task.start_date }}</td>
+                                            <td>{{ task.due_date }}</td>
+                                            <td>{{ task.is_completed|yesno:"yes, no" }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endif %}
+                     </div>
+                </div>
+            </div>
+            </div>
         </div>
     </main>
 {% endblock content %}
