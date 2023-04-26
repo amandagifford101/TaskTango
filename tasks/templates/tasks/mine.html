@@ -4,7 +4,7 @@
     <main>
         <div>
             <h1 class="h1 text-center fw-bold" style="margin-bottom: 20px; margin-top: 20px;">My Tasks</h1>
-            <div class="d-flex" style="margin-left: 55px;">
+            <div class="d-flex" style="margin-left: 45px;">
                 <a class="btn btn-outline-success" style="margin-bottom: 20px; margin-top: 0px;" href="{% url "create_task" %}" role="button">
                     New task <i class="bi bi-plus-circle"></i>
                 </a>
@@ -25,7 +25,7 @@
                                         <th>Task Name</th>
                                         <th>Start date</th>
                                         <th>Due date</th>
-                                        <th>Is completed</th>
+                                        <th>Complete</th>
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
@@ -36,9 +36,9 @@
                                             <td>{{ task.name }}</td>
                                             <td>{{ task.start_date }}</td>
                                             <td>{{ task.due_date }}</td>
-                                            <td>{{ task.is_completed|yesno:"yes, no" }}</td>
+                                            <td>{{ task.is_completed|yesno:"Complete, Incomplete" }}</td>
                                             <td><a class="btn btn-outline-danger" href="{% url "delete_task" task.id %}" role="button">
-                                                Delete Task <i class="bi bi-trash3"></i>
+                                                <i class="bi bi-trash3"></i>
                                             </a></td>
                                         </tr>
                                     {% endfor %}

@@ -10,13 +10,5 @@ urlpatterns = [
     path("", list_projects, name="list_projects"),
     path("<int:id>/", show_project, name="show_project"),
     path("create/", create_project, name="create_project"),
-    path(
-        "<int:id>/delete/",
-        include(
-            [
-                path("", delete_project, name="delete_project"),
-                path("<int:id>/", show_project, name="show_project"),
-            ]
-        ),
-    ),
+    path("<int:id>/delete/", delete_project, name="delete_project"),
 ]

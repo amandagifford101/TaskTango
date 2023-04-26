@@ -4,6 +4,7 @@ from tasks.views import (
     show_my_tasks,
     delete_task,
     create_task_specific,
+    show_project,
 )
 
 urlpatterns = [

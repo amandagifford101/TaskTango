@@ -3,17 +3,31 @@
 {% block content %}
     <main>
         <div>
-            <h1 class="h1 text-center fw-bold">{{ projects.name }}</h1>
+            <div class="accordion" id="accordionExample" style="margin-top: 45px; margin-bottom: 20px; margin-right: 25px; margin-left: 25px;">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        {{ projects.name }}
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <strong>This is {{ projects.name }}</strong> {{ projects.description }}
+                    </div>
+                  </div>
+                </div>
+            </div>
+
             <h2 class="h2 text-center">Tasks</h2>
-            <div class="d-flex justify-content-center" style="margin-top: 15px; margin-bottom: 15px;">
-                <a class="btn btn-outline-primary" style="margin-right: 15px;" href="{% url "create_task" %}" role="button">
+            <div class="d-flex" style="margin-top: 15px; margin-bottom: 15px;">
+                <a class="btn btn-outline-primary" style="margin-right: 15px; margin-left: 45px; margin-top: 20px; margin-bottom: 20px" href="{% url "create_task" %}" role="button">
                     New Task <i class="bi bi-plus-circle"></i>
                 </a>
             </div>
             {% comment %} {% if not projects.tasks.all %} {% endcomment %}
-            <div class="d-flex justify-content-center">
+            {% comment %} <div class="d-flex justify-content-center">
                 <p>This project has no tasks</p>
-            </div>
+            </div> {% endcomment %}
             {% comment %} {% else %} {% endcomment %}
             <div class="container">
                 <div class="row">
@@ -46,6 +60,29 @@
                                 </tbody>
                             </table>
                     {% comment %} {% endif %} {% endcomment %}
+                    <div class="row g-2">
+                        <div class="col p-2">
+                            <h3 class="h3">Project Progress</h3>
+                        </div>
+                    </div>
+                    <div class="row g-2 align-items-center">
+                        <div class="col p-2">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped bg-success"
+                                     role="progressbar"
+                                     style="width: {{ progress_percentage }}%"
+                                     aria-valuenow="{{ progress_percentage }}%"
+                                     aria-valuemin="0%"
+                                     aria-valuemax="100%">{{ progress_percentage }}% done</div>
+                                <div class="progress-bar progress-bar-striped bg-warning"
+                                     role="progressbar"
+                                     style="width:{{ remaining_percentage }}%"
+                                     aria-valuenow="{{ remaining_percentage }}%"
+                                     aria-valuemin="0%"
+                                     aria-valuemax="100%">{{ remaining_percentage }}% remaining</div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

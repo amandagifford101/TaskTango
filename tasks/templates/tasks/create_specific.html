@@ -23,10 +23,14 @@
                     <label for="{{ form.due_date.id_for_label }}">Due Date:</label>
                     {% render_field form.due_date class="form-control mb-3" placeholder="Due Date" type="date" %}
                 </div>
-                 <div class="form-group">
-                    <label for="{{ form.project.id_for_label }}">Project:</label>
-                    {% render_field form.project class="form-control mb-3" attr="readonly" value=projects.name %}
+                <div class="form-group">
+                    <label for="{{ form.project.id_for_label }}">Project</label>
+                    {% render_field form.project class="form-control mb-3" type="select" %}
                 </div>
+                 {% comment %} <div class="form-group">
+                    <label for="{{ form.project.id_for_label }}">Project:</label>
+                    {% render_field form.project class="form-control mb-3" value=projects.name %}
+                </div> {% endcomment %}
                 <div class="form-group">
                     <label for="{{ form.assignee.id_for_label }}">Assignee:</label>
                     {% render_field form.assignee class="form-control mb-3" placeholder="Assignee" type="select" %}
@@ -43,5 +47,6 @@
         </div>
     </main>
 {% endblock content %}
+{% comment %} attr="readonly" {% endcomment %}
 
 {% comment %} render_field form.project class="form-control mb-3" placeholder="Project" type="select" {% endcomment %}
