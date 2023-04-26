@@ -1,16 +1,33 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block content %}
     <main>
         <div>
-            <h1>Signup</h1>
-        {% comment %} <div class="flex-container"> {% endcomment %}
+            <div class="d-flex justify-content-center">
+            <h1 class="h1">Signup</h1>
+            </div>
+            <div class="container">
             <form method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button>Signup</button>
+                {% comment %} {{ form.as_p }} {% endcomment %}
+                <div class="form-group">
+                    {% comment %} <label for="{{ form.username.id_for_label }}">Username:</label> {% endcomment %}
+                    {% render_field form.username class="form-control mb-3" placeholder="Username" type="text" %}
+                </div>
+                <div class="form-group">
+                    {% comment %} <label for="{{ form.password.id_for_label }}">Password:</label> {% endcomment %}
+                    {% render_field form.password class="form-control mb-3" placeholder="Password" type="password" %}
+                </div>
+                <div class="form-group">
+                    {% comment %} <label for="{{ form.password_confirmation.id_for_label }}">Confirm Password:</label> {% endcomment %}
+                    {% render_field form.password_confirmation class="form-control mb-3" placeholder="Confirm Password" type="password" %}
+                </div>
+                <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-outline-primary" style="margin-top: 18px;">Login</button>
+            </div>
             </form>
         </div>
-        {% comment %} </div> {% endcomment %}
-    </main>
+    </div>
+</main>
 {% endblock content %}

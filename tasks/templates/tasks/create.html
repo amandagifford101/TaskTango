@@ -1,4 +1,51 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <main>
+        <div>
+            <div class="d-flex justify-content-center">
+            <h1 class="h1">Create Project</h1>
+            </div>
+            <div class="container">
+            <form method="post">
+                {% csrf_token %}
+                {% comment %} {{ form.as_p }} {% endcomment %}
+                <div class="form-group">
+                    {% comment %} <label for="{{ form.name.id_for_label }}">Task Name:</label> {% endcomment %}
+                    {% render_field form.name class="form-control mb-3" placeholder="Task Name" type="text" %}
+                </div>
+                <div class="form-group">
+                    {% comment %} <label for="{{ form.start_date.id_for_label }}">Start Date:</label> {% endcomment %}
+                    {% render_field form.start_date class="form-control mb-3" placeholder="Start Date" type="date" %}
+                </div>
+                <div class="form-group">
+                    {% comment %} <label for="{{ form.due_date.id_for_label }}">Due Date:</label> {% endcomment %}
+                    {% render_field form.due_date class="form-control mb-3" placeholder="Due Date" type="date" %}
+                </div>
+                <div class="form-group">
+                    {% comment %} <label for="{{ form.project.id_for_label }}">Project:</label> {% endcomment %}
+                    {% render_field form.project class="form-control mb-3" placeholder="Project" type="select" %}
+                </div>
+                <div class="form-group">
+                    {% comment %} <label for="{{ form.assignee.id_for_label }}">Assignee:</label> {% endcomment %}
+                    {% render_field form.assignee class="form-control mb-3" placeholder="Assignee" type="select" %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.is_completed.id_for_label }}">Is completed:</label>
+                    {% render_field form.is_completed placeholder="Checkbox" type="checkbox" %}
+                </div>
+                <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-outline-primary" style="margin-top: 25px;">Create</button>
+            </div>
+            </form>
+        </div>
+        </div>
+    </main>
+{% endblock content %}
+
+
+{% comment %} {% extends 'base.html' %}
 
 {% block content %}
     <main>
@@ -11,4 +58,4 @@
             </form>
         </div>
     </main>
-{% endblock content %}
+{% endblock content %} {% endcomment %}

@@ -5,12 +5,14 @@
         <div>
             <h1 class="h1 text-center fw-bold">My Projects</h1>
         <div class="d-flex justify-content-center">
-            <a class="btn btn-outline-primary" href="{% url "create_project" %}" role="button">
+            <a class="btn btn-outline-primary" style="margin-bottom: 25px;" href="{% url "create_project" %}" role="button">
                 Create a new project
             </a>
         </div>
             {% if not projects %}
+            <div class="d-flex justify-content-center">
                 <p>You are not assigned to any projects</p>
+            </div>
             {% else %}
             <div class="container">
                 <div class="row">
