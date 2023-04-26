@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <main>
+        <div>
+            <div class="d-flex justify-content-center" style="margin-top: 45px; margin-bottom: 30px;">
+            <h2 class="h2">Are you sure you want to delete <span class="badge bg-primary">{{ projects.name }}</span> ?</h2>
+            </div>
+            <div class="container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="d-flex justify-content-center" style="margin-top: 15px; margin-bottom: 15px;">
+            <button class="btn btn-outline-danger">Delete <i class="bi bi-trash3"></i></button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </main>
+{% endblock content %}

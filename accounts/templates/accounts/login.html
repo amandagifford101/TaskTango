@@ -12,11 +12,11 @@
                 {% csrf_token %}
                 {% comment %} {{ form.as_p }} {% endcomment %}
                 <div class="form-group">
-                    {% comment %} <label for="{{ form.username.id_for_label }}">Username:</label> {% endcomment %}
+                    <label for="{{ form.username.id_for_label }}">Username:</label>
                     {% render_field form.username class="form-control mb-3" placeholder="Username" type="text" %}
                 </div>
                 <div class="form-group">
-                    {% comment %} <label for="{{ form.password.id_for_label }}">Password:</label> {% endcomment %}
+                    <label for="{{ form.password.id_for_label }}">Password:</label>
                     {% render_field form.password class="form-control mb-3" placeholder="Password" type="password" %}
                 </div>
                 <div class="d-flex justify-content-center">

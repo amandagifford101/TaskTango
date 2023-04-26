@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from projects.models import Project
 from django.contrib.auth.decorators import login_required
 from projects.forms import ProjectForm
@@ -31,3 +31,15 @@ def create_project(request):
         "form": form,
     }
     return render(request, "projects/create.html", context)
+
+
+def delete_project(request, id):
+    projects = get_object_or_404(Project, id=id)
+    context = {
+        "projects": projects,
+    }
+    if request.method == "POST":
+        projects_delete = Project.objects.get(id=id)
+        projects_delete.delete()
+        return redirect("list_projects")
+    return render(request, "projects/delete.html", context)

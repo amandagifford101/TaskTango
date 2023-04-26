@@ -23,9 +23,9 @@
                     <label for="{{ form.due_date.id_for_label }}">Due Date:</label>
                     {% render_field form.due_date class="form-control mb-3" placeholder="Due Date" type="date" %}
                 </div>
-                <div class="form-group">
+                 <div class="form-group">
                     <label for="{{ form.project.id_for_label }}">Project:</label>
-                    {% render_field form.project class="form-control mb-3" placeholder="Project" type="select" %}
+                    {% render_field form.project class="form-control mb-3" attr="readonly" value=projects.name %}
                 </div>
                 <div class="form-group">
                     <label for="{{ form.assignee.id_for_label }}">Assignee:</label>
@@ -44,18 +44,4 @@
     </main>
 {% endblock content %}
 
-
-{% comment %} {% extends 'base.html' %}
-
-{% block content %}
-    <main>
-        <div>
-            <h1>Create Task</h1>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button>Create</button>
-            </form>
-        </div>
-    </main>
-{% endblock content %} {% endcomment %}
+{% comment %} render_field form.project class="form-control mb-3" placeholder="Project" type="select" {% endcomment %}

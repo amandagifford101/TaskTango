@@ -3,17 +3,17 @@
 {% block content %}
     <main>
         <div>
-            <h1 class="h1 text-center fw-bold">My Projects</h1>
-        <div class="d-flex justify-content-center">
-            <a class="btn btn-outline-primary" style="margin-bottom: 25px;" href="{% url "create_project" %}" role="button">
-                Create a new project
+            <h1 class="h1 text-center fw-bold" style="margin-bottom: 20px; margin-top: 20px;">My Projects</h1>
+        <div class="d-flex" style="margin-left: 55px;">
+            <a class="btn btn-outline-primary" style="margin-bottom: 20px; margin-top: 0px;" href="{% url "create_project" %}" role="button">
+                New project <i class="bi bi-plus-circle"></i>
             </a>
         </div>
-            {% if not projects %}
-            <div class="d-flex justify-content-center">
-                <p>You are not assigned to any projects</p>
-            </div>
-            {% else %}
+            {% comment %} {% if not projects %} {% endcomment %}
+            {% comment %} <div class="d-flex justify-content-center">
+                <h4>0 projects assigned</h4>
+            </div> {% endcomment %}
+            {% comment %} {% else %} {% endcomment %}
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -23,6 +23,8 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Number of tasks</th>
+                                        <th>Add task</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -32,6 +34,14 @@
                                                 <a class="btn btn-outline-info" href="{% url 'show_project' project.id %}" role="button">{{ project.name }}</a>
                                             </td>
                                             <td>{{ project.tasks.all|length }}</td>
+                                            <td>
+                                                <a class="btn btn-outline-success" href="{% url "create_task_specific" project.id %}" role="button">
+                                                    New Task <i class="bi bi-plus-circle"></i>
+                                                </a>
+                                            </td>
+                                            <td> <a class="btn btn-outline-danger" href="{% url "delete_project" project.id %}" role="button">
+                                                <i class="bi bi-trash3"></i>
+                                            </a></td>
                                         </tr>
                                     {% endfor %}
                                 </tbody>
@@ -40,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
+            {% comment %} {% endif %} {% endcomment %}
         </div>
     </main>
 {% endblock content %}

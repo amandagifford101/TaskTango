@@ -16,9 +16,13 @@ class TaskForm(forms.ModelForm):
 
         widgets = {
             "name": forms.TextInput(attrs={"class": "form-control-sm"}),
-            "start_date": forms.DateInput(attrs={"class": "form-control-sm"}),
+            "start_date": forms.DateInput(
+                attrs={"class": "form-control-sm"},
+            ),
             "due_date": forms.DateInput(attrs={"class": "form-control-sm"}),
-            "project": forms.Select(attrs={"class": "form-control-sm"}),
+            "project": forms.TextInput(
+                attrs={"class": "form-control-sm", "readonly": "readonly"}
+            ),
             "assignee": forms.Select(attrs={"class": "form-control-sm"}),
             "is_completed": forms.CheckboxInput(),
         }
